@@ -13,7 +13,9 @@ Description: The SHIP-package allows the estimation of various types of
         database KEGG. The shrinkage intensity is obtained via an
         analytical procedure.
 License: GPL (>= 2)
+Encoding: UTF-8
 Packaged: 2013-12-23 13:47:36 UTC; Vincent
 NeedsCompilation: no
 Repository: CRAN
 Date/Publication: 2013-12-23 15:17:34
+RoxygenNote: 7.3.1

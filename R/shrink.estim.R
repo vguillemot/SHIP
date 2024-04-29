@@ -1,3 +1,25 @@
+#' Shrinkage estimator of the covariance matrix, given a data set and a
+#' covariance target.
+#' 
+#' The shrinkage estimator is computed independently of the target's nature.
+#' 
+#' 
+#' @param x A \eqn{n \times p}{n x p} matrix (the data set) .
+#' @param tar A \eqn{p \times p}{p x p} matrix (the covariance target).
+#' @return A \eqn{p \times p}{p x p} shrinkage covariance matrix and the
+#' estimated \eqn{\lambda}{lambda}.
+#' @author Monika Jelizarow and Vincent Guillemot
+#' @references J. Schaefer and K. Strimmer, 2005. A shrinkage approach to
+#' large-scale covariance matrix estimation and implications for functional
+#' genomics.  Statist. Appl. Genet. Mol. Biol. 4:32.
+#' @keywords methods multivariate
+#' @examples
+#' 
+#' # Simulate dataset
+#' x <- matrix(rnorm(20*30),20,30)
+#' # Try different targets
+#' shrink.estim(x,tar=build.target(x,type="D"))
+#' 
 shrink.estim <-
 function(x,tar) {
 

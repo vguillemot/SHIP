@@ -1,3 +1,33 @@
+#' Computation of the target Cor.
+#' 
+#' The \eqn{p \times p}{p x p} target Cor is computed from the \eqn{n \times
+#' p}{n x p} data matrix. It it a modified version of target G. In particular,
+#' it tests the correlations (with a significance level of 0.05) and sets the
+#' non-significant correlations to zero before the mean correlation
+#' \eqn{\bar{r}}{r} is computed.
+#' 
+#' 
+#' @param x A \eqn{n \times p} data matrix.
+#' @param genegroups A list of genes obtained using the database KEGG, where
+#' each entry itself is a list of pathway names this genes belongs to. If a
+#' gene does not belong to any gene functional group, the entry is NA.
+#' @return A \eqn{p \times p}{p x p} matrix.
+#' @author Monika Jelizarow and Vincent Guillemot
+#' @seealso \code{\link{targetCor}}, \code{\link{targetF}},
+#' \code{\link{targetG}}, \code{\link{targetGstar}}, \code{\link{targetGpos}}.
+#' @references J. Schaefer and K. Strimmer, 2005. A shrinkage approach to
+#' large-scale covariance matrix estimation and implications for functional
+#' genomics.  Statist. Appl. Genet. Mol. Biol. 4:32.
+#' @keywords methods multivariate
+#' @examples
+#' 
+#' # A short example on a toy dataset
+#' # require(SHIP)
+#' data(expl)
+#' attach(expl)
+#' tar <- targetCor(x,genegroups)
+#' which(tar[upper.tri(tar)]!=0) # not many non zero coefficients !
+#' 
 targetCor <-
 function(x,genegroups) {
          
