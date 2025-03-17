@@ -4,6 +4,10 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- badges: start -->
+[![CRAN Status](https://www.r-pkg.org/badges/version/SHIP)](https://cran.r-project.org/package=SHIP){.SHIP-release}
+<!-- badges: end -->
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,

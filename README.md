@@ -1,9 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<!-- badges: start -->
+
+<a href="https://cran.r-project.org/package=SHIP"
+class="SHIP-release"><img
+src="https://www.r-pkg.org/badges/version/SHIP" alt="CRAN Status" /></a>
+<!-- badges: end -->
+
 # SHrinkage covariance Incorporating Prior knowledge
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 The SHIP package implements the shrinkage estimator of a covariance
