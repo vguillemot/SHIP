@@ -16,14 +16,14 @@
 #' @keywords internal
 #' @examples
 #' 
-#' g1 <- c("path1","path2","path3","path4")
-#' g2 <- c("path5","path6","path3","path11")
-#' g3 <- c("path10","path5","path12","path13")
-#' target.help(list(g1,g2,g3)) 
+#' g1 <- c("path1", "path2", "path3", "path4")
+#' g2 <- c("path5", "path6", "path3", "path11")
+#' g3 <- c("path10", "path5", "path12", "path13")
+#' target.help(list(g1, g2, g3)) 
 #' 
 #' 
-target.help <-
-function(genes) {
+#' @export
+target.help <- function(genes) {
   T <- diag(1,length(genes))                              
   for (i in 2:length(genes)) {                            
    for(j in 1:(i-1)) {                                    

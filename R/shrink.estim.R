@@ -18,10 +18,13 @@
 #' # Simulate dataset
 #' x <- matrix(rnorm(20*30),20,30)
 #' # Try different targets
-#' shrink.estim(x,tar=build.target(x,type="D"))
+#' shrink.estim(x, tar = build.target(x, type="D"))
+#' shrink.estim(x, tar = build.target(x, type="D"))
 #' 
-shrink.estim <-
-function(x,tar) {
+#' @importFrom stats cov cor cov2cor
+#' @export
+
+shrink.estim <- function(x,tar) {
 
     if (is.matrix(x)==TRUE && is.numeric(x)==FALSE) stop("The data matrix must be numeric!")
 

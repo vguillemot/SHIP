@@ -33,7 +33,6 @@ x <- matrix(rnorm(20*30),20,30)
 # Try different targets
 build.target(x,type="D")
 
-
 }
 \references{
 M. Jelizarow, V. Guillemot, A. Tenenhaus, K. Strimmer, A.-L.

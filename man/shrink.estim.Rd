@@ -24,7 +24,8 @@ The shrinkage estimator is computed independently of the target's nature.
 # Simulate dataset
 x <- matrix(rnorm(20*30),20,30)
 # Try different targets
-shrink.estim(x,tar=build.target(x,type="D"))
+shrink.estim(x, tar = build.target(x, type="D"))
+shrink.estim(x, tar = build.target(x, type="D"))
 
 }
 \references{
