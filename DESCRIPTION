@@ -1,9 +1,12 @@
 Package: SHIP
 Type: Package
 Title: SHrinkage covariance Incorporating Prior knowledge
-Version: 1.0.2
-Author: Monika Jelizarow and Vincent Guillemot
-Maintainer: Vincent Guillemot <vincent.j.guillemot@gmail.com>
+Version: 2.0.1
+Authors@R: c(
+    person("Vincent", "Guillemot", 
+    "vincent.guillemot@pasteur.fr", role = c("aut", "cre")),
+    person("Manika", "Jelizarow", role = "aut")
+  )
 Description: The SHIP-package allows the estimation of various types of
         shrinkage covariance matrices. These types differ in terms of
         the so-called covariance target (to be chosen by the user), the
