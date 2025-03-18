@@ -1,0 +1,11 @@
+bibentry(
+  bibtype  = "Article",
+  title    = "Over-optimism in bioinformatics: an illustration",
+  author   = "Jelizarow, Monika and Guillemot, Vincent and Tenenhaus, Arthur and Strimmer, Korbinian and Boulesteix, Anne-Laure",
+  journal  = "Bioinformatics",
+  year     = "2010",
+  volume   = "26",
+  number   = "16",
+  pages    = "1990--1998",
+  doi      = "10.1093/bioinformatics/btq323"
+)

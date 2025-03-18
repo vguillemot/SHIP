@@ -8,10 +8,10 @@ pathways.}
 build.target(x, genegroups = NULL, type)
 }
 \arguments{
-\item{x}{An \eqn{n \times p}{n x p} matrix.}
+\item{x}{An \eqn{n \times p} matrix.}
 
 \item{genegroups}{List of the groups each gene belongs to: each entry of the
-list is dedicated to a gene (identified the same way as in \code{x}). Each
+list is dedicated to a gene (identified the same way as in \eqn{x}). Each
 item of the list is thus a vector of pathway IDs.}
 
 \item{type}{Character string specifying the wished target: "D" for a
@@ -19,19 +19,20 @@ diagonal target, "cor" for a correlation target, "G", "Gpos" and "Gstar" for
 a G-type target (see Jelizarow et al, 2010) and "F" for a F-target.}
 }
 \value{
-A \eqn{p \times p}{p x p} target covariance matrix of a certain
+A \eqn{p \times p} target covariance matrix of a certain
 type.
 }
 \description{
-The function build.target() is a wrapper function to build the various types
-of covariance targets (D,F,G,Gpos,Gstar,cor).
+The function \code{build.target()} is a wrapper function to build the various types
+of covariance targets: diagonal ("D"), constant correlation ("F"),
+knowledge based ("G", "Gpos", and "Gstar"), correlation ("cor").
 }
 \examples{
 
 # Simulate dataset
-x <- matrix(rnorm(20*30),20,30)
+x <- matrix(rnorm(20*30), 20, 30)
 # Try different targets
-build.target(x,type="D")
+build.target(x, type = "D")
 
 }
 \references{

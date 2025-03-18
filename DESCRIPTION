@@ -1,24 +1,25 @@
 Package: SHIP
 Type: Package
-Title: SHrinkage covariance Incorporating Prior knowledge
-Version: 2.0.1
+Title: Shrinkage Covariance Incorporating Prior Knowledge
+Version: 2.0.2
 Authors@R: c(
-    person("Vincent", "Guillemot", 
-    "vincent.guillemot@pasteur.fr", role = c("aut", "cre")),
-    person("Manika", "Jelizarow", role = "aut")
+    person("Vincent", "Guillemot",  
+      email = "vincent.guillemot@pasteur.fr",
+      role = c("aut", "cre")),
+    person("Monika", "Jelizarow", role = "aut")
   )
 Description: The SHIP-package allows the estimation of various types of
         shrinkage covariance matrices. These types differ in terms of
         the so-called covariance target (to be chosen by the user), the
         highly structured matrix which the standard unbiased sample
         covariance matrix is shrunken towards and which optionally
-        incorporates prior biological knowledge extracted from the
-        database KEGG. The shrinkage intensity is obtained via an
-        analytical procedure.
+        incorporates prior knowledge. The shrinkage intensity 
+        is obtained via an analytical procedure.
 License: GPL (>= 2)
 Encoding: UTF-8
 Packaged: 2013-12-23 13:47:36 UTC; Vincent
 NeedsCompilation: no
 Repository: CRAN
 Date/Publication: 2013-12-23 15:17:34
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
