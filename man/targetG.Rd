@@ -2,7 +2,7 @@
 % Please edit documentation in R/targetG.R
 \name{targetG}
 \alias{targetG}
-\title{Computation of target G ('knowledge-based constant correlation model').}
+\title{Knowledge-based constant-correlation target.}
 \usage{
 targetG(x, genegroups)
 }
@@ -17,45 +17,36 @@ gene does not belong to any gene functional group, the entry is NA.}
 A \eqn{p \times p}{p x p} matrix.
 }
 \description{
-The \eqn{p \times p}{p x p} target G is computed from the \eqn{n \times p}{n
-x p} data matrix. It is defined as follows (\eqn{i,j = 1,...,p}{i,j =
-1,...,p}):
+This target applies the constant-correlation model only to pairs of genes
+that share a functional group. Let \eqn{C = (c_{ij})}{C = (c_ij)} be the
+binary group matrix and let \eqn{\bar{r}}{r_bar} be the mean correlation
+among linked pairs. Then
 \deqn{t_{ij} = 
   \begin{cases} 
     s_{ii} & \text{ if } i=j\\
     \bar{r}\sqrt{s_{ii}s_{jj}} & \text{ if } i\neq j, i\sim j
   \end{cases}}
-where \eqn{\bar{r}}{r}
-is the average of sample correlations and \eqn{s_{ij}}{sij} denotes the
-entry of the unbiased covariance matrix in row \eqn{i}{i}, column
-\eqn{j}{j}. The notation \eqn{i\sim j}{i ~ j} means that genes \eqn{i}{i}
-and \eqn{j}{j} are connected, i.e. genes \eqn{i}{i} and \eqn{j}{j} are in
-the same gene functional group.
+where \eqn{i \sim j}{i ~ j} means that genes \eqn{i}{i} and \eqn{j}{j}
+share a functional group. Unlinked off-diagonal entries are zero.
 }
 \examples{
-
-# A short example on a toy dataset
 # require(SHIP)
 data(expl)
-attach(expl)
-tar <- targetG(x,genegroups)
-which(tar[upper.tri(tar)]!=0) # not many non zero coefficients !
+target_matrix <- targetG(expl$x, expl$genegroups)
+which(target_matrix[upper.tri(target_matrix)] != 0) # not many non zero coefficients !
 
 }
-\references{
-\itemize{ \item J. Schaefer and K. Strimmer, 2005. A shrinkage
-approach to large-scale covariance matrix estimation and implications for
-functional genomics.  Statist. Appl. Genet. Mol. Biol. 4:32.  \item M.
-Jelizarow, V. Guillemot, A. Tenenhaus, K. Strimmer, A.-L. Boulesteix, 2010.
-Over-optimism in bioinformatics: an illustration. Bioinformatics. Accepted.
-}
-}
 \seealso{
-\code{\link{targetCor}}, \code{\link{targetF}},
-\code{\link{targetG}}, \code{\link{targetGstar}}, \code{\link{targetGpos}}.
+Other covariance targets:
+\code{\link[=targetCor]{targetCor()}},
+\code{\link[=targetD]{targetD()}},
+\code{\link[=targetF]{targetF()}},
+\code{\link[=targetGpos]{targetGpos()}},
+\code{\link[=targetGstar]{targetGstar()}}
 }
 \author{
 Monika Jelizarow and Vincent Guillemot
 }
+\concept{covariance targets}
 \keyword{methods}
 \keyword{multivariate}

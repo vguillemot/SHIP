@@ -2,9 +2,9 @@
 % Please edit documentation in R/targetD.R
 \name{targetD}
 \alias{targetD}
-\title{Computation of the diagonal target D ('diagonal, unequal variances').}
+\title{Diagonal covariance target.}
 \usage{
-targetD(x, genegroups)
+targetD(x, genegroups = NULL)
 }
 \arguments{
 \item{x}{A \eqn{n \times p}{n x p} data matrix.}
@@ -15,31 +15,28 @@ targetD(x, genegroups)
 A \eqn{p \times p}{p x p} diagonal matrix.
 }
 \description{
-The \eqn{p \times p}{n x p} diagonal target D is computed from the \eqn{n
-\times p}{n x p} data matrix. It is defined as follows (\eqn{i,j =
-1,...,p}{i,j=1,...,p}):
-\deqn{t_{ij}=\begin{cases}s_{ii} & \text{ if } i=j \\ 0 & \text{ otherwise }\end{cases}}
-where
-\eqn{s_{ij}}{sij} denotes the entry of the unbiased covariance matrix in row
-\eqn{i}{i}, column \eqn{j}{j}.
+The target keeps the sample variances and sets all covariances to zero. If
+\eqn{S = (s_{ij})}{S = (s_ij)} is the sample covariance matrix, the target
+is
+\deqn{T_{ij} = \begin{cases} s_{ii} & \text{if } i = j \\ 0 & \text{otherwise} \end{cases}}{T_ij = s_ii if i = j, and 0 otherwise.}
 }
 \examples{
 
 x <- matrix(rnorm(10*30),10,30)
-tar <- targetD(x,NULL)
+target_matrix <- targetD(x, NULL)
 
 }
-\references{
-J. Schaefer and K. Strimmer, 2005. A shrinkage approach to
-large-scale covariance matrix estimation and implications for functional
-genomics.  Statist. Appl. Genet. Mol. Biol. 4:32.
-}
 \seealso{
-\code{\link{targetCor}}, \code{\link{targetF}},
-\code{\link{targetG}}, \code{\link{targetGstar}}, \code{\link{targetGpos}}.
+Other covariance targets:
+\code{\link[=targetCor]{targetCor()}},
+\code{\link[=targetF]{targetF()}},
+\code{\link[=targetG]{targetG()}},
+\code{\link[=targetGpos]{targetGpos()}},
+\code{\link[=targetGstar]{targetGstar()}}
 }
 \author{
 Monika Jelizarow and Vincent Guillemot
 }
+\concept{covariance targets}
 \keyword{methods}
 \keyword{multivariate}

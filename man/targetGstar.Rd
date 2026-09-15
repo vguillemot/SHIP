@@ -2,7 +2,7 @@
 % Please edit documentation in R/targetGstar.R
 \name{targetGstar}
 \alias{targetGstar}
-\title{Computation of the target Gstar.}
+\title{Signed-correlation knowledge-based target.}
 \usage{
 targetGstar(x, genegroups)
 }
@@ -21,32 +21,36 @@ The \eqn{p \times p}{p x p} target Gstar is computed from the \eqn{n \times
 p}{n x p} data matrix. It it a modified version of target G. In particular,
 it involves two parameters for the correlation (a positive and a negative
 one) instead of the single parameter \eqn{\bar{r}}{r} in order to account
-for negatively correlated genes within the same pathway
+for negatively correlated genes within the same pathway.
+}
+\details{
+The target uses separate mean correlations for positive and negative linked
+pairs:
+\deqn{T_{ij} = \begin{cases}
+  \bar{r}_+\sqrt{s_{ii}s_{jj}} & \text{if } r_{ij} > 0 \\
+  \bar{r}_-\sqrt{s_{ii}s_{jj}} & \text{if } r_{ij} < 0
+\end{cases}}{T_ij = r_plus * sqrt(s_ii * s_jj) if r_ij > 0, and r_minus * sqrt(s_ii * s_jj) if r_ij < 0.}
+Here \eqn{\bar{r}_+}{r_plus} and \eqn{\bar{r}_-}{r_minus} are the mean
+positive and negative linked correlations.
 }
 \examples{
-
-# A short example on a toy dataset
 # require(SHIP)
 data(expl)
-attach(expl)
-tar <- targetGstar(x,genegroups)
-which(tar[upper.tri(tar)]!=0) # not many non zero coefficients !
+target_matrix <- targetGstar(expl$x, expl$genegroups)
+which(target_matrix[upper.tri(target_matrix)] != 0) # not many non zero coefficients !
 
 }
-\references{
-\itemize{ \item J. Schaefer and K. Strimmer, 2005. A shrinkage
-approach to large-scale covariance matrix estimation and implications for
-functional genomics.  Statist. Appl. Genet. Mol. Biol. 4:32.  \item M.
-Jelizarow, V. Guillemot, A. Tenenhaus, K. Strimmer, A.-L. Boulesteix, 2010.
-Over-optimism in bioinformatics: an illustration. Bioinformatics. Accepted.
-}
-}
 \seealso{
-\code{\link{targetCor}}, \code{\link{targetF}},
-\code{\link{targetG}}, \code{\link{targetGstar}}, \code{\link{targetGpos}}.
+Other covariance targets:
+\code{\link[=targetCor]{targetCor()}},
+\code{\link[=targetD]{targetD()}},
+\code{\link[=targetF]{targetF()}},
+\code{\link[=targetG]{targetG()}},
+\code{\link[=targetGpos]{targetGpos()}}
 }
 \author{
 Monika Jelizarow and Vincent Guillemot
 }
+\concept{covariance targets}
 \keyword{methods}
 \keyword{multivariate}

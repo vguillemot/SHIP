@@ -13,8 +13,7 @@ check.path(p1, p2)
 }
 \value{
 Return 0 if the two genes don't belong to a common pathway, return 1
-otherwise.  This is an internal function used by the function
-\code{\link{target.help}}.
+otherwise. This function is used by \code{\link{target.help}}.
 }
 \description{
 Takes as arguments two vectors of IDs and test whether they have a common
@@ -34,4 +33,3 @@ check.path(g1, g3) # 0
 \author{
 Monika Jelizarow and Vincent Guillemot
 }
-\keyword{internal}

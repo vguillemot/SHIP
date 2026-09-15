@@ -12,12 +12,11 @@ IDs a gene belongs to.}
 }
 \value{
 A \eqn{p \times p}{p x p} binary matrix: the coefficient (i,j) is 1
-if genes i and j belong to a common pathway and 0 otherwise. This is an
-internal function called by for example \code{\link{targetG}}.
+if genes i and j belong to a common pathway and 0 otherwise.
 }
 \description{
-This function is an internal function used to transform the given list of
-\eqn{p}{p} (one vector of pathway IDs per gene) groups into a binary matrix.
+This function transforms a list of \eqn{p}{p} (one vector of pathway IDs per
+gene) groups into a binary matrix.
 }
 \examples{
 
@@ -35,4 +34,4 @@ target.help(list(g1, g2, g3))
 \author{
 Monika Jelizarow and Vincent Guillemot
 }
-\keyword{internal}
+\keyword{methods}

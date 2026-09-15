@@ -2,7 +2,7 @@
 % Please edit documentation in R/targetCor.R
 \name{targetCor}
 \alias{targetCor}
-\title{Computation of the target Cor.}
+\title{Significance-filtered knowledge-based target.}
 \usage{
 targetCor(x, genegroups)
 }
@@ -23,26 +23,31 @@ it tests the correlations (with a significance level of 0.05) and sets the
 non-significant correlations to zero before the mean correlation
 \eqn{\bar{r}}{r} is computed.
 }
+\details{
+For retained linked pairs, the off-diagonal target is
+\deqn{T_{ij} = \bar{r}_{sig}\sqrt{s_{ii}s_{jj}}}{T_ij = r_sig * sqrt(s_ii * s_jj)}
+where \eqn{\bar{r}_{sig}}{r_sig} is the mean correlation among links
+whose correlation test p-value is below 0.05.
+}
 \examples{
 
 # A short example on a toy dataset
 # require(SHIP)
 data(expl)
-attach(expl)
-tar <- targetCor(x,genegroups)
-which(tar[upper.tri(tar)]!=0) # not many non zero coefficients !
-}
-\references{
-J. Schaefer and K. Strimmer, 2005. A shrinkage approach to
-large-scale covariance matrix estimation and implications for functional
-genomics.  Statist. Appl. Genet. Mol. Biol. 4:32.
+target_matrix <- targetCor(expl$x, expl$genegroups)
+which(target_matrix[upper.tri(target_matrix)] != 0) # not many non zero coefficients !
 }
 \seealso{
-\code{\link{targetCor}}, \code{\link{targetF}},
-\code{\link{targetG}}, \code{\link{targetGstar}}, \code{\link{targetGpos}}.
+Other covariance targets:
+\code{\link[=targetD]{targetD()}},
+\code{\link[=targetF]{targetF()}},
+\code{\link[=targetG]{targetG()}},
+\code{\link[=targetGpos]{targetGpos()}},
+\code{\link[=targetGstar]{targetGstar()}}
 }
 \author{
 Monika Jelizarow and Vincent Guillemot
 }
+\concept{covariance targets}
 \keyword{methods}
 \keyword{multivariate}

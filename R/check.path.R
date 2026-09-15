@@ -7,11 +7,9 @@
 #' @param p1 Vector of pathways that gene 1 belongs to.
 #' @param p2 Vector of pathways that gene 2 belongs to.
 #' @return Return 0 if the two genes don't belong to a common pathway, return 1
-#' otherwise.  This is an internal function used by the function
-#' \code{\link{target.help}}.
+#' otherwise. This function is used by \code{\link{target.help}}.
 #' @author Monika Jelizarow and Vincent Guillemot
 #' @seealso \code{\link{target.help}}
-#' @keywords internal
 #' @examples
 #' 
 #' g1 <- c("path1","path2","path3","path4")
@@ -20,8 +18,7 @@
 #' check.path(g1, g2) # 1
 #' check.path(g1, g3) # 0
 #' @export
-check.path <- function(p1,p2) {
-  bool <- any(p1 %in% p2, na.rm = TRUE) + 0
-  return(bool)
+check.path <- function(p1, p2) {
+  as.integer(any(p1 %in% p2, na.rm = TRUE))
 }
 

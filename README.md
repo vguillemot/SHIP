@@ -25,10 +25,12 @@ in the form of a $n \times p$ matrix, and a covariance target.
 If one wishes to use the proposed targets, the data set should be
 compatible with KEGG, i.e. it should be possible to extract for each
 gene the pathways it belongs to. This information, for example, can be
-found in libraries such as hgu133plus2.db. \## Installation
+found in libraries such as hgu133plus2.db.
+
+## Installation
 
 You can install the development version of SHIP from
-[GitHub](https://github.com/) with:
+[GitHub](https://github.com/vguillemot/SHIP) with:
 
 ``` r
 # install.packages("devtools")

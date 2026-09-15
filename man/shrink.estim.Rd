@@ -5,36 +5,48 @@
 \title{Shrinkage estimator of the covariance matrix, given a data set and a
 covariance target.}
 \usage{
-shrink.estim(x, tar)
+shrink.estim(x, target)
 }
 \arguments{
 \item{x}{A \eqn{n \times p}{n x p} matrix (the data set) .}
 
-\item{tar}{A \eqn{p \times p}{p x p} matrix (the covariance target).}
+\item{target}{A \eqn{p \times p}{p x p} matrix (the covariance target).}
 }
 \value{
-A \eqn{p \times p}{p x p} shrinkage covariance matrix and the
-estimated \eqn{\lambda}{lambda}.
+A list with components \code{shrink.cov}, the estimated covariance
+matrix, and \code{lambda}, the estimated shrinkage intensity.
 }
 \description{
-The shrinkage estimator is computed independently of the target's nature.
+The estimator combines the sample covariance matrix \eqn{S}{S} with a
+target matrix \eqn{T}{T}:
+\deqn{\widehat{\Sigma} = \lambda T + (1 - \lambda)S}{Sigma_hat = lambda * T + (1 - lambda) * S}
+The estimated intensity \eqn{\lambda}{lambda} is constrained to
+\eqn{[0, 1]}{[0, 1]}. Values near zero keep more of the sample covariance;
+values near one give more weight to the target.
 }
 \examples{
 
 # Simulate dataset
 x <- matrix(rnorm(20*30),20,30)
 # Try different targets
-shrink.estim(x, tar = build.target(x, type="D"))
-shrink.estim(x, tar = build.target(x, type="D"))
+shrink.estim(x, target = build.target(x, type = "D"))
 
 }
 \references{
 J. Schaefer and K. Strimmer, 2005. A shrinkage approach to
 large-scale covariance matrix estimation and implications for functional
 genomics.  Statist. Appl. Genet. Mol. Biol. 4:32.
+Jelizarow, M., Guillemot, V., Tenenhaus, A., Strimmer, K. and Boulesteix,
+A.-L. (2010). Over-optimism in bioinformatics: an illustration.
+Bioinformatics.
+}
+\seealso{
+Other main functions:
+\code{\link[=build.target]{build.target()}}
 }
 \author{
 Monika Jelizarow and Vincent Guillemot
 }
+\concept{main functions}
 \keyword{methods}
 \keyword{multivariate}

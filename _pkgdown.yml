@@ -1,4 +1,27 @@
-url: ~
+url: https://github.com/vguillemot/SHIP
 template:
   bootstrap: 5
+  math-rendering: mathjax
+
+reference:
+  - title: Main functions
+    contents:
+      - build.target
+      - shrink.estim
+
+  - title: Covariance targets
+    contents:
+      - targetD
+      - targetF
+      - targetCor
+      - targetG
+      - targetGpos
+      - targetGstar
+
+  - title: Data and helpers
+    contents:
+      - SHIP-package
+      - expl
+      - target.help
+      - check.path
 

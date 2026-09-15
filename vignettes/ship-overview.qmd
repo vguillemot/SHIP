@@ -1,0 +1,105 @@
+---
+title: "A short introduction to SHIP"
+author: "SHIP authors"
+format:
+  html:
+    toc: true
+    code-fold: true
+    html-math-method: mathjax
+execute:
+  warning: false
+  message: false
+vignette: >
+  %\VignetteIndexEntry{A short introduction to SHIP}
+  %\VignetteEngine{quarto::html}
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(SHIP)
+```
+
+SHIP estimates covariance matrices by combining the sample covariance matrix
+with a structured target. The final estimate has the form
+
+$$
+\widehat{\Sigma} = \lambda T + (1 - \lambda)S,
+$$
+
+where $S$ is the sample covariance matrix, $T$ is a target, and
+$0 \leq \lambda \leq 1$ controls the amount of shrinkage.
+
+## The example data
+
+The package includes `expl`, a small microarray data set with 102 observations
+and 100 genes. The accompanying `genegroups` list contains KEGG pathway IDs
+when they are available; `NA` means that no pathway information is available
+for that gene.
+
+```{r}
+#| label: data-summary
+
+ data("expl")
+dim(expl$x)
+length(expl$genegroups)
+sum(vapply(expl$genegroups, function(group) !all(is.na(group)), logical(1)))
+```
+
+## Comparing covariance targets
+
+`build.target()` constructs several targets. `D` and `F` use only the data;
+`G`, `Gpos`, `Gstar`, and `cor` also use the pathway groups.
+
+```{r}
+#| label: target-summary
+
+target_types <- c("D", "F", "G", "Gpos", "Gstar", "cor")
+targets <- setNames(
+  lapply(target_types, function(type) {
+    build.target(expl$x, expl$genegroups, type = type)
+  }),
+  target_types
+)
+
+target_summary <- data.frame(
+  target = names(targets),
+  dimension = vapply(targets, function(target) paste(dim(target), collapse = " x "), character(1)),
+  nonzero = vapply(targets, function(target) sum(target != 0), integer(1)),
+  row.names = NULL
+)
+target_summary
+```
+
+The diagonal target keeps the sample variances and sets covariances to zero.
+The constant-correlation target uses one average correlation for all
+off-diagonal entries. The knowledge-based targets restrict correlations to
+genes that share a pathway; `Gpos` keeps positive links, while `Gstar`
+separates positive and negative links.
+
+## Estimating a covariance matrix
+
+The target can then be passed to `shrink.estim()`.
+
+```{r}
+#| label: shrinkage
+
+estimate <- shrink.estim(expl$x, targets[["G"]])
+
+c(
+  lambda = estimate$lambda,
+  sample_variance = sum(diag(cov(expl$x))),
+  estimated_variance = sum(diag(estimate$shrink.cov))
+)
+```
+
+A value of `lambda` close to zero keeps more of the empirical covariance
+matrix. A value close to one gives more weight to the structured target.
+
+The target definitions are based on Schaefer and Strimmer (2005) and
+Jelizarow et al. (2010), *Over-optimism in bioinformatics: an illustration*.

@@ -38,7 +38,7 @@ it belongs to.  This information, for example, can be found in libraries
 such as hgu133plus2.db.
 ## Installation
 
-You can install the development version of SHIP from [GitHub](https://github.com/) with:
+You can install the development version of SHIP from [GitHub](https://github.com/vguillemot/SHIP) with:
 
 ``` r
 # install.packages("devtools")

@@ -44,8 +44,12 @@ Bioinformatics. Accepted.
 \code{\link{targetCor}}, \code{\link{targetD}},
 \code{\link{targetF}}, \code{\link{targetG}}, \code{\link{targetGpos}},
 \code{\link{targetGstar}},.
+
+Other main functions:
+\code{\link[=shrink.estim]{shrink.estim()}}
 }
 \author{
 Vincent Guillemot
 }
+\concept{main functions}
 \keyword{methods}

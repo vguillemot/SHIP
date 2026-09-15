@@ -2,9 +2,9 @@
 % Please edit documentation in R/targetF.R
 \name{targetF}
 \alias{targetF}
-\title{Computation of target F ('constant correlation model').}
+\title{Constant-correlation covariance target.}
 \usage{
-targetF(x, genegroups)
+targetF(x, genegroups = NULL)
 }
 \arguments{
 \item{x}{A \eqn{n \times p}{n x p} data matrix.}
@@ -15,40 +15,39 @@ targetF(x, genegroups)
 A \eqn{p \times p}{p x p} matrix.
 }
 \description{
-The \eqn{p \times p}{p x p} target F is computed from the \eqn{n \times p}{n
-x p} data matrix. It is defined as follows (\eqn{i,j = 1,...,p}{i,j =
-1,...,p}):
+The target keeps the sample variances and replaces every off-diagonal
+correlation by their average. If \eqn{S = (s_{ij})}{S = (s_ij)} is the
+sample covariance matrix and \eqn{\bar{r}}{r_bar} is the mean sample
+correlation, then
 \deqn{
-  t_{ij} = \begin{cases} 
-   s_{ii} & \text{ if } i=j \\
-   \bar{r}\sqrt{s_{ii}s_{jj} \text{ otherwise }}& 
+  T_{ij} = \begin{cases}
+   s_{ii} & \text{if } i = j \\
+   \bar{r}\sqrt{s_{ii}s_{jj}} & \text{otherwise}
   \end{cases}
+}{
+  T_ij = s_ii if i = j, and r_bar * sqrt(s_ii * s_jj) otherwise.
 }
-where \eqn{\bar{r}}{r} is the average of
-sample correlations and \eqn{s_{ij}}{sij} denotes the entry of the unbiased
-covariance matrix in row \eqn{i}{i}, column \eqn{j}{j}.
 }
 \examples{
 
 # A short example on a toy dataset
 # require(SHIP)
 data(expl)
-attach(expl)
-tar <- targetF(x,NULL)
-which(tar[upper.tri(tar)]!=0) # many non zero coefficients !
+target_matrix <- targetF(expl$x, NULL)
+which(target_matrix[upper.tri(target_matrix)] != 0) # many non zero coefficients !
 
 }
-\references{
-J. Schaefer and K. Strimmer, 2005. A shrinkage approach to
-large-scale covariance matrix estimation and implications for functional
-genomics.  Statist. Appl. Genet. Mol. Biol. 4:32.
-}
 \seealso{
-\code{\link{targetCor}}, \code{\link{targetF}},
-\code{\link{targetG}}, \code{\link{targetGstar}}, \code{\link{targetGpos}}.
+Other covariance targets:
+\code{\link[=targetCor]{targetCor()}},
+\code{\link[=targetD]{targetD()}},
+\code{\link[=targetG]{targetG()}},
+\code{\link[=targetGpos]{targetGpos()}},
+\code{\link[=targetGstar]{targetGstar()}}
 }
 \author{
 Monika Jelizarow and Vincent Guillemot
 }
+\concept{covariance targets}
 \keyword{methods}
 \keyword{multivariate}

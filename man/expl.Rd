@@ -27,5 +27,5 @@ data("expl")
 The microarray data set is the study on the prostate cancer by Singh et al.
 The collection of the microarray is hgu95av2, and the gene groups are thus
 given by the information in the hgu95av2.db Bioconductor library (see
-Carslon et al.).
+Carlson et al.).
 }

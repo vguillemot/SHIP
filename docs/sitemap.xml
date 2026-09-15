@@ -1,51 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/SHIP.html</loc>
-  </url>
-  <url>
-    <loc>/reference/build.target.html</loc>
-  </url>
-  <url>
-    <loc>/reference/check.path.html</loc>
-  </url>
-  <url>
-    <loc>/reference/expl.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/shrink.estim.html</loc>
-  </url>
-  <url>
-    <loc>/reference/target.help.html</loc>
-  </url>
-  <url>
-    <loc>/reference/targetCor.html</loc>
-  </url>
-  <url>
-    <loc>/reference/targetD.html</loc>
-  </url>
-  <url>
-    <loc>/reference/targetF.html</loc>
-  </url>
-  <url>
-    <loc>/reference/targetG.html</loc>
-  </url>
-  <url>
-    <loc>/reference/targetGpos.html</loc>
-  </url>
-  <url>
-    <loc>/reference/targetGstar.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://github.com/vguillemot/SHIP/404.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/articles/index.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/articles/ship-overview.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/authors.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/index.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/news/index.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/SHIP-package.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/build.target.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/check.path.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/expl.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/index.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/shrink.estim.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/target.help.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/targetCor.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/targetD.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/targetF.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/targetG.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/targetGpos.html</loc></url>
+<url><loc>https://github.com/vguillemot/SHIP/reference/targetGstar.html</loc></url>
 </urlset>

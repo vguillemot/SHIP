@@ -22,6 +22,7 @@
 #' @references M. Jelizarow, V. Guillemot, A. Tenenhaus, K. Strimmer, A.-L.
 #' Boulesteix, 2010.  Over-optimism in bioinformatics: an illustration.
 #' Bioinformatics. Accepted.
+#' @family main functions
 #' @keywords methods
 #' @examples
 #' 
@@ -32,12 +33,19 @@
 #' 
 #' @export
 build.target <- function(x, genegroups = NULL, type) {
+  validate_data(x)
+  type <- match.arg(type, c("D", "F", "cor", "G", "Gpos", "Gstar"))
+  if (type %in% c("cor", "G", "Gpos", "Gstar")) {
+    validate_gene_groups(genegroups, ncol(x))
+  }
 
-  targetFun <- switch(type, cor = targetCor,
-                            D = targetD,
-                            F = targetF,
-                            G = targetG,
-                            Gpos = targetGpos,
-                            Gstar = targetGstar)
-  res <- targetFun(x,genegroups)
+  target_function <- switch(type,
+    cor = targetCor,
+    D = targetD,
+    F = targetF,
+    G = targetG,
+    Gpos = targetGpos,
+    Gstar = targetGstar
+  )
+  target_function(x, genegroups)
 }
